@@ -23,6 +23,66 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
+#print(products)
+
+#print(type(products))
+#print(type(products[0]))
+
+#print(len(products))
+
+#print(products[0])
+
+#print(products[0]["name"])
+
+#for p in products:
+    #print(p["name"])
+
+products_count = len(products)
+
+print("----------------------")
+print("THERE ARE " +str(products_count) + " PRODUCTS:")
+print("----------------------")
+
+def product_name(products):
+    return products["name"]
+
+products = sorted(products, key=product_name)
+
+for p in products:
+    price_usd = "(${0:.2f})".format(p["price"])
+    print(" ..." + p["name"] + " " + price_usd)
+
+
+
+departments = []
+for p in products:
+    if p["department"] not in departments:
+        departments.append(p["department"])
+
+department_count = len(departments)
+
+#other options
+#for p in products: departments.append(p["department"])
+#unique_departments = list(set(departments))
+#department_count = len(unique_departments)
+
+
+print("----------------------")
+print("THERE ARE " +str(department_count) + " DEPARTMENTS:")
+print("----------------------")
+
+departments.sort()
+
+for d in departments:
+    matching_products = [p for p in products if p["department"] == d]
+    matching_products_count = len(matching_products) 
+    if matching_products_count > 1:
+        label = "products"
+    else:
+        label = "product"
+    print(d.title() + " (" + str(matching_products_count) + " " + label + ")")
+
+
+
 
 # TODO: write some Python code here to produce the desired output
