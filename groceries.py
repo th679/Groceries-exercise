@@ -50,7 +50,7 @@ products = sorted(products, key=product_name)
 
 for p in products:
     price_usd = "(${0:.2f})".format(p["price"])
-    print(" ..." + p["name"] + " " + price_usd)
+    print(" + " + p["name"] + " " + price_usd)
 
 
 
@@ -60,11 +60,6 @@ for p in products:
         departments.append(p["department"])
 
 department_count = len(departments)
-
-#other options
-#for p in products: departments.append(p["department"])
-#unique_departments = list(set(departments))
-#department_count = len(unique_departments)
 
 
 print("----------------------")
@@ -80,8 +75,7 @@ for d in departments:
         label = "products"
     else:
         label = "product"
-    print(d.title() + " (" + str(matching_products_count) + " " + label + ")")
-
+    print(" + " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
 
 
 
